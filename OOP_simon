@@ -1,0 +1,538 @@
+import java.awt.event.ActionListener;
+
+import javax.swing.JOptionPane;
+
+private int copies;
+
+public int getCopies()
+
+{return copies;
+
+}
+//=======
+public void setCopies(int pCopies){copies=pCopies;}
+
+public void orderCopies(int pCopies){setCopies(getCopies()+pCopies);}
+
+public void recvNewIssue(String pNewIssue){setCopies(orderQty);currIssue=pNewIssue;}
+//===
+public class DiscMag extends Magazine {
+  public DiscMag(String pTitle, double pPrice, int pOrderQt,
+      String pCurrIssue, int pCopies) {
+    super(pTitle, pPrice, pOrderQt, pCurrIssue, pCopies);
+  }
+
+  public void recvNewIssue(String pNewIssue) {
+    super.recvNewIssue(pNewIssue);
+    System.out.println("Check discs attached to this magazine ");
+  }
+
+  }
+
+  // ====
+  public String toString() {
+    return mTitle;
+  }
+
+  //
+  public String toString() {
+    return super.toString() + "by" + mAuthor;
+  }
+
+  //
+  public String toString() {
+    return super.toString() + " (" + mCurrIssue + ")";
+  }
+
+  //
+
+  class CashTill {
+    private double runningTotal;
+
+    CashTill() {
+
+      runningTotal = 0;
+    }
+
+    public void sellItem(Publication pPub) {
+      runningTotal = runningTotal + pPub.getPrice();
+      pPub.sellCopy();
+      System.out.println("Sold" + pPub + " @" +
+          pPub.getPrice() + "\nSubtotal = " +
+          runningTotal);
+    }
+
+    public void showTotal() {
+      System.out.println("GRANDTotal = " + runningTotal);
+    }
+  }
+
+  //
+  interface SaleableItem {
+    public void sellCopy();
+
+    public double getPrice();
+
+  }
+
+  //
+  class Publication implements SalealbeItem {
+    {...class details...}
+  }
+
+    //
+    public void saleType(SaleableItem pSelb) {
+      if (pSelb instanceof Publication) {
+        System.out.println("This is a Publication");
+      } else if (pSelb instanceof Ticket) {
+        System.out.println("This is a Ticket");
+      } else {
+        System.out.println("This is a an unknown sale type");
+
+      }
+    }
+
+    //
+    public class ListDemo {
+      List mAList;
+
+      public ListDemo() {
+        mAList = new ArrayList();
+      }
+
+      public void appendString(String pStr) {
+        mAList.add(pStr);
+
+      }
+
+      public void insertString(int pPos, String pStr) {
+
+        mAList.add(pPos, pStr);
+      }
+
+      public void deleteString(int pPos) {
+        mAList.remove(pPos);
+      }
+
+      public void display() {
+        String nextItem;
+        Iterator it = mAList.iterator();
+
+        while (it.hasNext()) {
+          nextItem = (String) it.next();
+          System.out.print(nextItem + " ");
+        }
+        System.out.println();
+      }
+    }
+    //
+
+    public class ListDemo {
+      private List<String> mAList;
+
+      public ListDemo() {
+        mAList = new ArrayList<String>();
+      }
+
+      public void display() {
+        for (String nextItem : mAList) {
+          System.out.print(nextItem + " ");
+        }
+        System.out.println();
+      }
+    }
+
+    //
+public boolean equals(Object pObj)
+  {
+  Account account = (Account) pObj;
+return (accountNumber.equals(account.accountNumber);
+  }
+
+    //
+
+    public int hashCode() {
+      return accountNumber.hashCode();
+    }
+
+    //
+public void findString(String pStr)
+  {
+  boolean found;
+
+found = stringSet.contains(pStr);
+
+if(found)
+{
+  System.out.println("Element  " + pStr + "found in set");
+}
+else
+{
+  System.out.println("Element " + pStr + "not found in set");
+}
+
+    //
+    //
+public void findPublication(Publication pPub)
+  
+  {
+  boolean found;
+
+found = publicationSet.contains(pPub);
+
+if(found)
+{
+  System.out.println("Element  " + pPub + "found in set");
+}
+else
+{
+  System.out.println("Element " + pPub + "not found in set");
+}
+}
+
+// 8 Java Development Tools 133P
+
+class UnknownClientException extends Exception
+{
+  UnknownClientException (String pMessage)
+  {
+    super(pMessage);
+  }
+}
+//
+
+if(foundClient != null)
+{
+  return foundClient;
+}
+else
+{
+  throw new UnknownClientException("BookOfClients.getClient(): 
+                                   unknown client ID:" + pClientID);
+  
+}
+
+//
+try
+  {
+    Client c = listOfClients.getClient(clientID);
+    c.determineCreditRating();
+
+    
+  }
+
+catch(UnknownClientException uce)
+  {
+    System.out.println("INTERNAL ERROR IN BankManager.awardLoan() \n"
+                      + "Exception details: " + uce);
+  }
+//
+
+public void testAddClient()
+  {
+  BookofClients bofc = new BookOfClients();
+  Client c = new Client("Simon",
+                       "No 5, Main St., Sunderland, SR1, 0DD");
+
+  Client c2 = null;
+  bofc.addClient("SK001", c);
+  try{
+        c2 = bofc.getClient("Sk001");
+    
+  }catch(UnknownClientException uce){
+    fail();
+  }
+  assertEquals("Simon", c2.getName());
+  assertEquals("No 5, Main St., Sunderland, SR1, 0DD", c2.getAddress());
+}
+
+//
+
+public void testGetUnKnownClient(){
+  BookfClients bofc = new BookOfClients();
+  try{
+      bofc.getClient("SK001");
+    fail();
+  }catch(UnknownClientException uce){
+    
+  }
+}
+//
+public void testClientToString(){
+  Client c = new Client("Simon", "No 5, Main St., Sunderland");
+  assertEquals("Client name\nAddress: 5 Main St.,
+               Sunderland", c.toString());
+}
+//
+
+public class Message implements Serializable
+  {
+    final int COST = 1;
+
+    private String clientID;
+    private String messageText;
+    private int daysRemaining;
+
+    public Message (String pClientID, String pText,
+                   int pDaysRemaining){
+      clientID = pClientID;
+      messageText = pText;
+      daysRemaining = pDaysRemaining;
+  }
+    public void decrementDays(){
+      daysRemaining--;
+    }
+
+    public boolean hasExpired(){
+      return (daysRemaining == 0);
+    }
+
+    public String getClientID(){
+      return clientID;
+    }
+    public String getText(){
+      return messageText;
+    }
+
+    public int getCost(){
+      return COST;
+    }
+
+    public int hashCode(){
+      return (clientID + messageText).hashCode();
+    }
+
+    public boolean equals(Object pObj){
+      Message otherMSg = (Message) pOther;
+      return (clientID.equals(otherMsg.clientID) &&
+             messageText.equals(otherMsg.messageText));
+    }
+    public String toString(){
+      return ("Message text: " + messageText + "\nClient: " +clientID +
+             "\nDays left: " + daysRemaining);
+    }
+  }
+//
+
+public class UrgentMessage extends Message
+  {
+    final int COST = 2;
+
+    public UrgentMessage(String pClientID, String pText,
+                         int pDaysRemaining){
+      super(pClientID, pText, pDaysRemaining);
+  }
+
+    public String getText(){
+      return "*** " + super.getText() + " ***";
+      
+    }
+
+    public int getCost(){
+      return COST;
+    }
+  }
+//
+public class MessageList implements Serializable
+  {
+    private Set<Message> messageSet;
+    private ClientBook client;
+
+    public MessageSet (ClientBook pClients){
+      clients = pClients;
+      messageSet = new HashSet<Message>();
+  }
+
+    public void addMessage(Message pMsgToAdd){
+      messageSet.add(pMsgToAdd);
+    }
+
+
+  public void display(DisplayBoardControl db)
+    {
+      db.loadMessages(messageSet);
+      db.run();
+    }
+
+    public void dailyPurge(){
+      
+    }
+
+    public void saveToFile(ObjectOutputStream oos){
+      try{
+        oos.writeObject(this);
+      }catch(IOException ioe){
+        JOptionPane.showMessageDialog(null, "" + ioe);
+    }
+    }
+
+    static public MessageSet readFromFile(ObjectInputStream ois){
+      MessageSet cb = null;
+
+      try{
+        cb = (MessageSet) ois.readObject();
+      }catch(I0Exception ioe){
+        JOptionPane.showMessageDialog(null, "" + ioe);
+          System.exit(1);
+    }catch(ClassNotFoundException cnfe){
+        JOptionPane.showMessageDialog(null, "" + cnfe);
+        System.exit(1);
+    }
+      return cb;
+    }
+  }
+
+//
+public void dailyPurge(){
+
+  Client client;
+
+  for(Message msg : messageSet){
+
+    msg.decrementDays();
+
+    try
+      {
+        client = clients.getClient(msg.getClientID());
+        client.decreaseCrefit(msg.getCost());
+
+        if(msg.hasExpired() || client.getCredit() <= 0){
+          messageSet.remove(msg);
+          
+      }
+}
+
+    catch(UnknownClientException uce){
+      JOptionPane.showMessageDialog(null,
+                                    "INTERNAl ERROR IN MessageSet.Purge()\n " +
+                                    "Exception details: " + uce + "\n Message details: \n" + msg);
+
+      if(msg.hasExpired()){
+        messageSet.remove(msg);
+      }
+    }
+  }
+}
+//
+public class ClientBook implements Serializable{
+  private Map<String, Client> clientMap;
+
+  public ClientBook(){
+    clientMap = new HashMap<String,Client>();
+
+    
+}
+
+  public void addClient(String pClientID, Client pClient){
+    clientMap.put(pClientID, pClient);
+  }
+  public Client getClient(String pClientID){
+  }
+
+  public void saveToFile(ObjectOutputStream oos){
+  }
+
+  static public ClientBook readFromFile(ObjectInputStream ois){
+  
+    }
+
+  }
+
+//
+public Client getClient (String pClientID)
+  throws UnknownClientException{
+
+  Client foundClient;
+
+  foundClient = clientMap.get(pClientID);
+
+  if(foundClient != null){
+    return foundClient;
+  }else{
+    throw new UnknownClientException("ClientBook.getClient():
+                                     unknown client ID" + pClientID);
+  }
+}
+
+
+//
+
+public void startUp(){
+  try {
+    FileInputStream fis = new FileInputStream(MMS_DATA_FILE);
+    ObjectInputStream ois = new ObjectInputStream(fis);
+
+    cb = ClientBook.readFromFile(ois);
+    ms = MessageSet.readFromFile(ois);
+    fis.close();
+    
+  }catch(FileNotFoundException fnfe){
+    JOPtionPane.showMessageDialog(null, "No existing client/message data found ");
+
+    cb = new ClientBook();
+    ms = new MessageSet(cb);
+}catch(IOException ioe){
+    JOptionPane.showMessageDialog(null, , "" + ioe);
+    System.exit(1);
+  }
+}
+
+//
+private class FindClientListener implements ActionListener{
+  public void actionPerformed(ActionEvent arg0){
+    String id = JOptionPane.showInputDialog(null, "Enter client ID");
+
+    if (id == null ) id = ""; 
+
+    try{
+      JOptionPane.showMessageDialog(null, 
+                                   manager.getClientBook().getClient(id).toString());
+    }
+catch(UnknownClientException uke){
+  JOptionPane.showMessageDialog(null,
+                               "No such client");
+}
+  }
+    
+}
+//
+publci void testIncreaseCredit(){
+  Client c= new Client("Simon", "Room 217", "x2756", 10);
+  c.increaseCredit(10);
+assertEquals(20, c.getCredit());
+}
+
+public void testDeleteClient(){
+  ClientBook cb = new ClientBook();
+  Client c = new Client ("Simon", "Room 217", "x2756", 10");
+  cb.addClient("sk", c);
+  try{
+    cb.deleteClient("sk");
+  }catch(UnknownClientException uce){
+    fail();
+  }
+  try{
+    c = cb.getClient("sk");
+    fail();
+  }catch(UnknownClientException uce){
+    
+  }
+}
+//
+public void increaseCredit(int pExtraCredit){
+  credit = credit + pExtraCredit;
+}
+
+//
+public class Client implements Serializable{
+
+  public Client(String pName, String pAddress, String pPhone,
+                int pCredit){
+
+  
+  public int getCredit(){
+
+    
+  }
+    //
+    
