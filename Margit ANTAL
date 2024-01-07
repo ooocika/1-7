@@ -1,0 +1,659 @@
+public class Counter {
+  private int value;
+
+  public void inc();
+
+  ++value;
+
+}
+
+  public int getValue() {
+    return value;
+  }
+}
+
+//
+public class Foo {
+  private int x;
+  private float f = 0.0;
+  private String name = "Anonymous";
+
+}
+
+//
+public class Counter {
+  public static final int MAX = 100;
+  private int value;
+
+  public void inc() {
+    if (value < MAX) {
+      ++value;
+    }
+  }
+
+  public int getValue() {
+    return value;
+  }
+}
+
+//
+public class Counter {
+  public static final int MAX = 100;
+  private int value;
+
+  public void inc() {
+    if (value < MAX) {
+      ++value;
+    }
+  }
+
+  public int getValue() {
+    return value;
+  }}
+
+  Counter c = new Counter();c.inc();
+  int i = c.getValue();
+
+  //
+  public class Date {
+    private int year, month, day;
+
+    public Date(int y, int m, int d) {
+      if (verify(y, m, d)) {
+        year = y;
+        month = m;
+        day = d;
+      }
+    }
+
+    private boolean verify(int y, int m, int d) {
+    }
+  }
+  //
+
+  public class MyDate {
+    private int day = 26;
+    private int month = 9;
+    private int year = 2016;
+
+    public MyDate(int day, int month, int year) {
+
+    }
+  }
+
+  MyDate date1 = new MyDate(20, 6, 2000);
+
+  //
+  public class PassTest {
+    public void changePrimitive(int value) {
+      ++value;
+    }
+
+    public void changeReference(MyDate from, MyDate to) {
+      from = to;
+    }
+
+    public void changeObject(MyDate from, int day) {
+      date.setDay(day);
+    }
+  }
+
+  //
+  PassTest pt = new PassTest();
+  int x = 100;pt.changePrimitve(x);System.out.println(x);
+
+  MyDate oneDate = new MyDate(3, 10, 2016);
+  MyDate anotherDate = new MyDate(3, 10, 2001);
+
+  pt.changeReference(oneDate,anotherDate);System.out.println(oneDate.getDay());
+
+  pt.changeObject(oneDate,12);System.out.println(oneDate.getDay());
+
+  //
+
+  public class MyDate {
+
+    private int year = 26;
+    private in month = 9;
+    private int year = 2016;
+
+    public MyDate(int day, int month, int year) {
+      this.day = day;
+      this.month = month;
+      this.year = year;
+    }
+
+    public MyDate(MyDate date) {
+      this.day = date.day;
+      this.month = date.month;
+      this.year = date.year;
+    }
+
+    public MyDate creteNextDate(int moreDays) {
+      MyDate newDate = new MyDate(this);
+      return newDate;
+    }
+  }
+
+  //
+  public class ScopeExample {
+    private int i = 1;
+
+    public void firstMethod() {
+      int i = 4, j = 5;
+
+      this.i = i + j;
+      secondMethod(7);
+    }
+
+    public void secondMethod(int i) {
+      int j = 8;
+      this.i = i + j;
+    }
+  }
+
+  public class TestScoping {
+    public static void main(String[] args) {
+      ScopeExample scope = new ScopeExample();
+
+      scope.firstMethod();
+    }
+  }
+
+  //
+  int[] t;
+
+  t=new int[10];
+
+  for(
+  int v:t)
+  {
+    System.out.println(v);
+  }
+
+  //
+  int[] t;
+
+  t=new int[10];
+
+  //
+  Point[] t;
+
+  t=new Point[3];
+
+  for(
+  int i = 0;i<3;++i){
+  p[i] = new Point(i, i);
+}
+
+  //
+  void printElements(int t[]) {
+    for (int i = 0; i < t.length; ++i) {
+      System.out.println(t[i]);
+    }
+
+  }
+
+  // Module 3 Static Members
+
+  public class Product {
+    private int sNumber;
+    public static int counter = 0;
+
+    public Product() {
+      counter++;
+      sNumber = counter;
+    }
+
+  }
+
+  //
+  public class Product {
+    private in sNumber;
+
+    private static int counter = 0;
+
+    public static int getCounter() {
+      return counter;
+
+    }
+
+    public Product() {
+      counter++;
+      sNumber = counter;
+    }
+  }
+
+  //
+  public class InstanceCounter {
+    private static int counter;
+
+    public InstanceCounter() {
+      ++counter;
+    }
+
+    public static int getCounter() {
+      return counter;
+    }
+
+  }
+
+  //
+  public class Singleton {
+    private static Singleton instance;
+
+    private Singleton() {
+
+    }
+
+    public static Singleton getInstance() {
+      if (instance == null) {
+        instance = new Singleton();
+      }
+      return instance;
+    }
+  }
+
+  //
+  public class AClass {
+    private static int counter;
+
+    static {
+
+    }
+  }
+
+  ///
+  public class Employee {
+    private final long ID;
+
+    public Employee() {
+      ID = createID();
+    }
+
+    private lond createID() {
+    }
+
+  }
+
+  //
+public enum GestureType{
+  Up,
+  RIGHT,
+  DOWN,
+  LEFT
+}
+
+  for(
+
+  GestureType type:GestureType.values())
+  {
+    System.out.println(type);
+  }
+
+  OUTPUT:
+UP
+RIGHT
+DOWN
+LEFT
+
+  //
+  public enum GestureType {
+    UP(0, "fel")
+    RIGHT(1, "jobb");DOWN(2,"le");LEFT(3,"bal");
+
+GestureType(int value, String name){
+  this.value = value;
+  this.name = name;
+  
+  }
+
+public int getValue(){
+  return value;
+
+}
+
+public String getName(){
+  return name;
+  
+  }
+
+    private int value;
+    private String name;
+  }
+  //
+  for(
+
+  GestureType type:GestureType.values())
+  {
+    System.out.println(type.name() + ", " +
+        type.getName() + ", " + type.getValue());
+  }
+
+  //
+  final public class Product {
+    private final int ID;
+  }
+
+  //
+  static public class Product {
+    private final int ID;
+
+    private static counter;
+    public Product();ID=++counter;
+  }
+
+}
+
+//
+public class Product {
+  private final int ID;
+  private static int counter;
+  private static final String name = "Product";
+
+  public Product() {
+    ID = ++counter;
+
+  }
+
+  public String getIDStr() {
+    return name + ID;
+  }
+}
+
+//
+public class Person {
+  private String name;
+  private Date birthDate;
+
+  public Person(String name, Date birthDate) {
+    this.name = name;
+    this.birthDate = birthDate;
+  }
+}
+
+//
+public class Course {
+  private final lonf ID;
+  privatre String name;
+
+  public static final int MAX_STUDENTS = 100;
+
+  private Student[] enrolledStudents;
+  private int numStudents;
+
+  public Course(long ID, String name) {
+    this.ID = ID;
+    this.name = name;
+    enrolledStudents = new Student[MAX_STUDENTS];
+  }
+
+  public void enrollStudent(Student student) {
+    enrolledStudents[numStudents] = student;
+    ++numStudents;
+  }
+}
+
+//
+public class Employee {
+  protected String name;
+  protected Date birthDate;
+  protected double salary;
+
+  public Employee() {
+
+  }
+
+  public String toString() {
+
+  }
+}
+
+//
+public class Manager extends Employee {
+  private String department;
+
+  public Manager() {
+
+  }
+
+  public String toString() {
+  }
+
+}
+
+//
+
+public class Manager extends Employee {
+  private String department;
+
+  public Manager(String name, double salary, Date birthDate, String department) {
+
+    super(name, salary, birthDate);
+    this.department = department;
+  }
+}
+
+//
+public class Employee{
+  protected String name;
+  protected Date birthDate;
+  protected double salary;
+  public Employee( ){
+
+    
+}
+  public String toString(){
+    
+  }
+}return"Name: "+name+" Salary: "+salary+" B. Date: "+birthDate;}}
+
+public class Manager extends Employee {
+  private String department;
+
+  public Manager() {
+
+  }
+
+  @Override
+  public String toString() {
+    return "Name: " + name + " Salary: " + salary + " B. Date: " + birthDate + "department:" + department;
+  }
+}
+
+//
+public class Employee {
+  protected String name;
+  protected Date birthDate;
+  protected double salary;
+
+  public Employee() {
+  }
+
+  public String toString() {
+    return "Name: " + name + " Salary: " + salary + " B. Date: " + birthDate;
+  }
+}
+
+//
+public class Manager extends Employee {
+  private String department;
+
+  public Manager() {
+  }
+
+  public String toString() {
+    return super.toString() + " Department: " + department;
+  }
+}
+
+//
+public class Parent {
+  public void foo() {
+
+  }
+
+  public class Child extends Parent {
+    private void foo() {
+    }
+  }
+
+  //
+  Employee e = new Employee();System.out.println(e.toString());
+
+  e=new Manager();System.out.println(e.toString());
+
+  //
+  public String createMessage(Employee e) {
+    return "Hello, " + e.getName();
+  }
+
+  Employee e1 = new Employee("Endre", 2000, new Date(20, 8, 1986));
+  Manager m1 = new Manager("Johann", 3000,
+      new Date(15, 9, 1990), "Sales");
+
+  System.out.println(createMessage(e1));
+System.out.println(createMessage(m1));
+//
+Employee emps[] = new Employee[100];
+emps[0] = new Employee();
+emps[1] = new Manager();
+emps[2] = new Employee();
+
+
+for(Employee e: emps){
+  System.out.println(e.toString());
+}
+
+int counter = 0;
+for(Employee e:emps){
+  if(e instanceof Manager){
+    ++counter;
+  }
+  
+}
+//
+
+public class Employee{
+  protected String name;
+  protected Date birthDate;
+  protected double salary;
+  public Employee(String name, double salary, Date birthDate){
+    this.name = name;
+    this.salary = salary;
+    this.birthDate = birthDate;
+  }
+  public Employee(String name, double salary){
+    this(name, salary, null);
+  }
+  public Employee(String name, Date birthDate){
+    this(name, 1000, birthDate);
+  }
+}
+//
+public class MyDate{
+  private int day;
+  private int month;
+  private int year;
+
+  public boolean equals(Object o){
+    boolean result = false;
+    if(()0 != null) && (o instanceof MyDate)){
+      MyDate d = (MyDate)o;
+      if((day == d.day) && 
+        (month == d.month) &&
+        (year == d.year)){
+        result = true;
+  }
+}
+
+    return result;
+  }
+}
+//
+private class MyDate{
+  private int day;
+  private int month;
+  private int year;
+
+  @override
+  public boolean equals(Object o){
+    if(this == o) return true;
+    if(o == null ||this.getClass() != o.getClass()) return false;
+    MyDate myDate = (MyDate)o;
+    return day == myDate.day && month == myDate.month && year == myDate.year;
+  }
+}
+//
+int i = 420;
+Integer anInt = i;
+//Module 6 Interfaces and Abstract Classes
+
+public interface Driveable{
+  public void start();
+  public void forward();
+  public void turn(double angle);
+  public void stop();
+}
+
+  //
+  public class Bicyle implements Driveable {
+    @Override
+    public void start() {
+      System.out.println("The bicycle has been started");
+    }
+
+    @Override
+    public void forward() {
+      System.out.println("The bicycle moving forward");
+    }
+
+    @Override
+    public void turn(double angle) {
+      System.out.println("The bicycle turning by " + angle + " clockwise");
+    }
+
+    @Override
+    public void stop() {
+      System.out.println("The bicycle has been stopped");
+    }
+  }
+
+  //
+  List<String> l1 = new ArrayList<>();l1.add("welcome");l1.add("to");l1.add("java");
+
+Iterator<String> it = l1.iterator();while(it.hasNext())
+  {
+    System.out.println(it.next() + " ");
+  }for(
+  String str:l1)
+  {
+    System.out.print(str + " ");
+  }
+  //
+  ]
+
+  public class Utils {
+  public static void moveMe(Driveable v){
+    v.start();
+    for(int i=0; i < 12; ++i){
+      v.turn(15);
+    }
+    v.stop()''
+  }
+  }
+
+  Utils.moveMe(new Bicycle());Utils.moveMe(new Car());
+
+  //
+  public class Utils {
+    public static void println(List<String> list) {
+      for (String s : list) {
+        System.out.println(s);
+      }
+    }
+}
+
+List<String> l1 = new ArrayList<>();Utils.printlt(l1);
+List<String> l2 = new LinkedList<>();Utils.printlt(12);
+// Interfaces Java 8 150P
